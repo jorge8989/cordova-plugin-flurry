@@ -48,9 +48,13 @@
     };
 
     // event must be a string
-    Flurry.prototype.logEvent = function(event, successCallback, failureCallback) {
-        return cordova.exec( successCallback, failureCallback, 'Flurry', 'logEvent', [event]);
-    };
+    //Flurry.prototype.logEvent = function(event, successCallback, failureCallback) {
+    //    return cordova.exec( successCallback, failureCallback, 'Flurry', 'logEvent', [event]);
+    //};
+    //backward compatible
+    Flurry.prototype.logEvent = function(event, parameters){
+        return this.logEventWithParameters(event, parameters, function(){}, function(){});
+    }
 
     // parameters must be a JSON dictionary that contains only strings like {id:"4", price: "471", location: "New York"}
     Flurry.prototype.logEventWithParameters = function(event, parameters, successCallback, failureCallback) {
@@ -121,6 +125,8 @@
             window.plugins = {};
         }
         window.plugins.flurry = new Flurry();
+        //backward compatible
+        window.flurry = navigator.flurry = window.plugins.flurry;
     };
 
     cordova.addConstructor(Flurry.install);
