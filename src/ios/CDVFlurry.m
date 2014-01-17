@@ -18,7 +18,7 @@
     NSString* appkey = [settings valueForKey:@"com.flurry.app_key"];
     @try {
         if (appkey != nil && [appkey length] > 0) {
-            NSLog(@"Start flurry session with key " + appkey);
+            NSLog(@"Start flurry session with key %@", appkey);
             [Flurry startSession: appkey];
         }
     }
