@@ -12,11 +12,22 @@
 
 @implementation CDVFlurry
 
-- (id)init {
-    self = [super init];
-    if (self) {
+- (void) pluginInitialize
+{
+    NSDictionary *settings = self.commandDelegate.settings;
+    NSString* appkey = [settings valueForKey:@"com.flurry.app_key"];
+    @try {
+        if (appkey != nil && [appkey length] > 0) {
+            NSLog(@"Start flurry session with key " + appkey);
+            [Flurry startSession: appkey];
+        }
     }
-    return self;
+    @catch (NSException *e) {
+        NSLog(@"Failed to start flurry session");
+        NSArray *stack = [e callStackReturnAddresses];
+        NSLog(@"Caught exception %@ : %@ ", [e name], [e reason]);
+        NSLog(@"%@", stack);
+    }
 }
 
 

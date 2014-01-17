@@ -26,13 +26,14 @@
         <config-file target="config.xml" parent="/*">
             <feature name="Flurry">
                 <param name="ios-package" value="CDVFlurry" />
+                <param onload="true" />
             </feature>
         </config-file>
 
         <header-file src="src/ios/CDVFlurry.h" />
         <source-file src="src/ios/CDVFlurry.m" />
         <source-file src="src/ios/Flurry.h" />
-        <source-file src="src/ios/libFlurry_4.2.2.a" framework="true" />
+        <source-file src="src/ios/libFlurry_4.3.1.a" framework="true" />
 
         <framework src="UIKit.framework" />
     </platform>
