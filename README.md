@@ -19,5 +19,11 @@ Here's how to install the plugin:
 
 1. Register with Flurry and get an App key
 2. Install plugin with plugman or cordova-cli
-3. Call the startSession() method, with your app key, after the device is ready
+3. Call the startSession() method, with your app key, after the device is ready. Or you can add your flurry key to www/config.xml like this (iOS only for now):
+
+```
+<!-- Flurry App Key -->
+<preference name="com.flurry.app_key" value="FLURRY_APP_KEY" />
+```
+
 4. Call the other Flurry methods as appropriate.
