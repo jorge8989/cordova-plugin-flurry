@@ -36,6 +36,7 @@
         <source-file src="src/ios/libFlurry_4.3.1.a" framework="true" />
 
         <framework src="UIKit.framework" />
+        <framework src="Foundation.framework" weak="true" />
     </platform>
 
 </plugin>
