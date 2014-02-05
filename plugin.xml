@@ -24,6 +24,8 @@
                      target-dir="src/com/phonegap/plugins" />
         <source-file src="src/android/Flurry_3.2.1.jar"
                      target-dir="libs" />
+
+        <source-file src="src/android/FHUtils.java" target-dir="src/com/feedhenry/phonegap/" />
         <source-file src="src/android/Analytics.java" target-dir="src/com/feedhenry/phonegap/analytics" />
     </platform>
 
