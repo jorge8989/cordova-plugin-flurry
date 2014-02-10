@@ -14,9 +14,6 @@
         <config-file target="res/xml/config.xml" parent="/*">
             <feature name="Flurry">
                 <param name="android-package" value="com.phonegap.plugins.Flurry" />
-            </feature>
-            <feature name="Analytics">
-                <param name="android-package" value="com.feedhenry.phonegap.analytics.Analytics" />
                 <param name="onload" value="true" />
             </feature>
         </config-file>
@@ -24,9 +21,6 @@
                      target-dir="src/com/phonegap/plugins" />
         <source-file src="src/android/Flurry_3.2.1.jar"
                      target-dir="libs" />
-
-        <source-file src="src/android/FHUtils.java" target-dir="src/com/feedhenry/phonegap/" />
-        <source-file src="src/android/Analytics.java" target-dir="src/com/feedhenry/phonegap/analytics" />
     </platform>
 
     <platform name="ios">
