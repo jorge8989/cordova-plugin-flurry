@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
         xmlns:android="http://schemas.android.com/apk/res/android"
-        id="com.phonegap.plugins.flurry"
-        version="0.0.1">
+        id="com.guopengliang.cordova.flurry"
+        version="0.1.0">
+
     <name>Flurry</name>
 
     <js-module src="www/flurry.js" name="Flurry">
         <clobbers target="Flurry" />
     </js-module>
 
-
     <platform name="android">
         <config-file target="res/xml/config.xml" parent="/*">
             <feature name="Flurry">
-                <param name="android-package" value="com.phonegap.plugins.Flurry" />
+                <param name="android-package" value="com.guopengliang.cordova.Flurry" />
                 <param name="onload" value="true" />
             </feature>
         </config-file>
         <source-file src="src/android/Flurry.java"
-                     target-dir="src/com/phonegap/plugins" />
-        <source-file src="src/android/Flurry_3.2.1.jar"
+                     target-dir="src/com/guopengliang/cordova" />
+        <source-file src="src/android/FlurryAnalytics.jar"
                      target-dir="libs" />
     </platform>
 
@@ -34,7 +34,7 @@
         <header-file src="src/ios/CDVFlurry.h" />
         <source-file src="src/ios/CDVFlurry.m" />
         <source-file src="src/ios/Flurry.h" />
-        <source-file src="src/ios/libFlurry_4.3.1.a" framework="true" />
+        <source-file src="src/ios/libFlurry.a" framework="true" />
 
         <framework src="UIKit.framework" />
         <framework src="Foundation.framework" weak="true" />
