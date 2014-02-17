@@ -1,4 +1,4 @@
-package com.phonegap.plugins;
+package com.guopengliang.cordova;
 
 import java.util.HashMap;
 import java.util.Iterator;
@@ -14,7 +14,6 @@ import android.content.res.XmlResourceParser;
 import android.util.Log;
 
 import com.flurry.android.FlurryAgent;
-import com.urbanairship.Logger;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -75,7 +74,7 @@ public class Flurry extends CordovaPlugin {
 
                   if (name.startsWith(FLURRY_KEY_STRING) && value != null && !value.isEmpty()) {
                       flurryKey = value;
-                      Logger.verbose("Found " + name + " in config.xml with value: " + value);
+                      // Logger.verbose("Found " + name + " in config.xml with value: " + value);
                       break;
                   }
               }
@@ -84,7 +83,7 @@ public class Flurry extends CordovaPlugin {
           try {
               eventType = xml.next();
           } catch (Exception e) {
-              Logger.error("Error parsing config file", e);
+              // Logger.error("Error parsing config file", e);
           }
       }
       
