@@ -168,10 +168,8 @@
     NSLog(@"Event Parameters: %@", [command.arguments objectAtIndex:1]);
     
     @try {
-        NSError *e = nil;
         NSString* event = [command.arguments objectAtIndex:0];
-        NSData * data = [[command.arguments objectAtIndex:1] dataUsingEncoding:NSUTF8StringEncoding];
-        NSDictionary* parameters = [NSJSONSerialization JSONObjectWithData: data options: NSJSONReadingMutableContainers error: &e];
+        NSDictionary* parameters = [command.arguments objectAtIndex:1];
         bool Timed = [[command.arguments objectAtIndex:1]boolValue];
         
         [Flurry logEvent:event withParameters:parameters timed:Timed];
@@ -193,10 +191,8 @@
     NSLog(@"Event Parameters: %@", [command.arguments objectAtIndex:1]);
     
     @try {
-        NSError *e = nil;
         NSString* event = [command.arguments objectAtIndex:0];
-        NSData * data = [[command.arguments objectAtIndex:1] dataUsingEncoding:NSUTF8StringEncoding];
-        NSDictionary* parameters = [NSJSONSerialization JSONObjectWithData: data options: NSJSONReadingMutableContainers error: &e];
+        NSDictionary* parameters = [command.arguments objectAtIndex:1];
         
         [Flurry endTimedEvent:event withParameters:parameters];
         pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
