@@ -1,5 +1,5 @@
 //
-//  FlurryPhoneGapPlugin.h
+//  CDVFlurry.h
 //  Trailerpop
 //
 //  Created by John Potter on 11/21/12.
