@@ -5,7 +5,7 @@ Forked from [jfpsf](https://github.com/jfpsf/flurry-phonegap-plugin)
 
 Updated to be installable via plugman/cordova-cli and compatible with cordova 3.0
 
-Included latest Flurry libraries (Android: 3.3.4, iOS: 4.3.2)
+Included latest Flurry libraries (Android: 3.4.0, iOS: 4.4.0)
 
 
 =====
