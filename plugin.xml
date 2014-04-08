@@ -2,12 +2,22 @@
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
 		xmlns:android="http://schemas.android.com/apk/res/android"
 		id="com.guopengliang.cordova.flurry"
-		version="0.1.2">
+		version="0.2.0">
 
 	<name>Flurry</name>
 
+	<description>
+		Flurry analytics plugin for Cordova/PhoneGap projects.
+	</description>
+
+	<author>Guopeng Liang</author>
+
+	<engines>
+		<engine name="cordova" version=">=3.0.0" />
+	</engines>
+
 	<js-module src="www/flurry.js" name="Flurry">
-		<clobbers target="Flurry" />
+		<clobbers target="navigator.flurry" />
 	</js-module>
 
 	<!-- android -->
