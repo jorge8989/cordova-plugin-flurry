@@ -109,12 +109,12 @@ var flurry = {
 	},
 
 	// argument must be Yes or No, because it's objective C
-	setSessionReportsOnCloseEnabled = function(enabled, success, fail) {
+	setSessionReportsOnCloseEnabled: function(enabled, success, fail) {
 		exec(success, fail, 'Flurry', 'setSessionReportsOnCloseEnabled', [enabled]);
 	},
 
 	// argument must be Yes or No, because it's objective C
-	setSessionReportsOnPauseEnabled = function(enabled, success, fail) {
+	setSessionReportsOnPauseEnabled: function(enabled, success, fail) {
 		exec(success, fail, 'Flurry', 'setSessionReportsOnPauseEnabled', [enabled]);
 	},
 
