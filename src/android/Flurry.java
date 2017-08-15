@@ -20,16 +20,16 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class Flurry extends CordovaPlugin {
-  
+
     private boolean flurryEnabled = false;
     private static final String FLURRY_KEY_STRING = "com.flurry.app_key";
-  
+
     @Override
     public void initialize(CordovaInterface cordova, CordovaWebView webView) {
       super.initialize(cordova, webView);
       setup();
     }
-    
+
     private void setup(){
       String flurryKey = getFlurryKey(this.cordova.getActivity().getApplication());
       if (null != flurryKey) {
@@ -37,7 +37,7 @@ public class Flurry extends CordovaPlugin {
         flurryEnabled = true;
       }
     }
-    
+
     @Override
     public void onDestroy() {
       super.onDestroy();
@@ -45,7 +45,7 @@ public class Flurry extends CordovaPlugin {
         FlurryAgent.onEndSession(this.cordova.getActivity());
         flurryEnabled = false;
       }
-      
+
     }
 
     @Override
@@ -56,7 +56,7 @@ public class Flurry extends CordovaPlugin {
         flurryEnabled = false;
       }
     }
-    
+
     private String getFlurryKey(Application pApplication){
       int id = pApplication.getResources().getIdentifier("config", "xml", pApplication.getPackageName());
       if (id == 0) {
@@ -86,7 +86,7 @@ public class Flurry extends CordovaPlugin {
               // Logger.error("Error parsing config file", e);
           }
       }
-      
+
       return flurryKey;
     }
 
@@ -104,26 +104,28 @@ public class Flurry extends CordovaPlugin {
         }
         return params;
     }
-    
+
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
         try{
             Log.d("Flurry", action);
             if(action.equals("startSession")) {
                 FlurryAgent.onStartSession(cordova.getActivity().getApplicationContext(), args.getString(0));
+            } else if(action.equals("endSession")) {
+                FlurryAgent.onEndSession(this.cordova.getActivity());
             } else if(action.equals("setAppVersion")) {
                 FlurryAgent.setVersionName(args.getString(0));
             } else if(action.equals("setUserID")) {
                 FlurryAgent.setUserId(args.getString(0));
             } else if(action.equals("setGender")) {
                 FlurryAgent.setGender((byte)args.getLong(0));
-            } else if(action.equals("setAge")) {                
+            } else if(action.equals("setAge")) {
                 FlurryAgent.setAge((int)args.getLong(0));
             } else if (action.equals("logEvent") || action.equals("logEventWithParameters")
                     || action.equals("logTimedEvent") || action.equals("logTimedEventWithParameters")) {
                 boolean timed = false;
                 if(args.optString(2).equalsIgnoreCase("Yes")) timed = true;
-                this.logEvent(args.getString(0), args.optJSONObject(1), timed);                
+                this.logEvent(args.getString(0), args.optJSONObject(1), timed);
             } else if(action.equals("endTimedEvent")) {
                 FlurryAgent.endTimedEvent(args.getString(0));
             } else if(action.equals("endTimedEventWithParameters")) {
@@ -146,14 +148,14 @@ public class Flurry extends CordovaPlugin {
                 return false;
             }
             callbackContext.success("");
-            return true; 
+            return true;
         } catch (JSONException e){
             Log.d("Flurry exception: ", e.getMessage());
             callbackContext.error("flurry json exception: " + e.getMessage());
             return false;
         }
     }
-    
+
     private void logEvent(String eventName, JSONObject options, boolean timed)  throws JSONException {
         if(options != null){
             Map<String, String> params = this.JsonToMap(options);
@@ -162,5 +164,5 @@ public class Flurry extends CordovaPlugin {
         }else{
             FlurryAgent.logEvent(eventName, timed);
         }
-    }   
+    }
 }
