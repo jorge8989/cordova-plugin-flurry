@@ -49,6 +49,10 @@ var flurry = {
 		exec(success, fail, 'Flurry', 'startSession', [key]);
 	},
 
+	endSession: function(success, fail) {
+		exec(success, fail, 'Flurry', 'endSession', []);
+	},
+
 	// event must be a string
 	//logEvent: function(event, success, fail) {
 	//	exec(success, fail, 'Flurry', 'logEvent', [event]);
